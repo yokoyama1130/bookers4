@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters,if: :devise_controller?
 
-  def after_sign_in_path_for(resource)
-      about_path
-  end
+  # ログイン後の遷移先の変更　一覧画面へ遷移するように設定した。
+	def after_sign_in_path_for(resource)
+	  post_images_path
+	end
   
   def after_sign_out_path_for(resource)
     about_path
