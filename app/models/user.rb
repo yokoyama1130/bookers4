@@ -4,6 +4,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :post_comments, dependent: :destroy  
+  # これいるの？描き忘れてた？
+  has_one_attached :profile_image
   
   def get_profile_image(width, height)
     unless profile_image.attached?
